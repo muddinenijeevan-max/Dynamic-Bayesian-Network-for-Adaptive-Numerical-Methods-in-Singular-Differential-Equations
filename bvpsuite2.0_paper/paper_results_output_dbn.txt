@@ -1,0 +1,24 @@
+
+bvpsuite2.0 -- reproduction of the bvpsuite2.0 results of Hohenegger et al., ANM 205 (2024)
+Platform: GNU Octave 8.4.0
+Mesh adaptation: dbn
+Rows marked "this run" are computed now; rows marked "paper" are the printed values.
+Quantities of size <~1e-12 are dominated by round-off and depend on the platform / linear algebra library.
+
+==== Problem 4:  y'' + (N-1)/t y' - 4 lam^2 (y+1) y (y-xi) = 0, y'(0)=0, y(inf)=xi  (Table 8) ====
+     (solved on tau = 1 - 1/sqrt(1+t) in [0,1], as in the paper)
+   xi order    TOL   mesh     abs. error
+  0.1     6  1e-08     26     6.3167e-12   this run
+                       51     2.8471e-14   paper
+  0.1     8  1e-08     26     8.6937e-15   this run
+                       51     1.4489e-15   paper
+  0.1    10  1e-08     26     1.4141e-13   this run
+                       51     2.2298e-13   paper
+  0.6     6  1e-08     51     7.6069e-10   this run
+                       51     7.6069e-10   paper
+  0.6     8  1e-08     26     1.4908e-09   this run
+                       51     2.7590e-12   paper
+  0.6    10  1e-08     26     2.1403e-11   this run
+                       51     6.1910e-12   paper
+
+Total run time: 87.3 s

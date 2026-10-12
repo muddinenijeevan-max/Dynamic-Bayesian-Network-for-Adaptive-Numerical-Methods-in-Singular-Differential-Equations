@@ -1,0 +1,91 @@
+
+bvpsuite2.0 -- reproduction of the bvpsuite2.0 results of Hohenegger et al., ANM 205 (2024)
+Platform: MATLAB 25.2.0.3055257 (R2025b) Update 2
+Mesh adaptation: classic
+Rows marked "this run" are computed now; rows marked "paper" are the printed values.
+Quantities of size <~1e-12 are dominated by round-off and depend on the platform / linear algebra library.
+
+==== Problem 1:  y'' - y'/t - 2 = 0, y(0)=y(1)=0,  exact y = t^2 ln t   (Table 1) ====
+order    TOL start   mesh        error   exact rel.   exact abs.
+    6  1e-08    51     51   6.0972e-10   3.3399e-14   6.1434e-15   this run
+                       51   6.1013e-10   3.3430e-14   6.1490e-15   paper
+    8  1e-08    51     51   6.6734e-10   1.7881e-13   3.2890e-14   this run
+                       51   6.6641e-10   1.7964e-13   3.3029e-14   paper
+   10  1e-08    51     51   9.3283e-10   1.1064e-11   2.0352e-12   this run
+                       51   9.2947e-10   1.1065e-11   2.0351e-12   paper
+    6  1e-08    21     21   3.4398e-09   2.8810e-13   5.2993e-14   this run
+                       21   3.4399e-09   2.8829e-13   5.2993e-14   paper
+    8  1e-08    21     21   7.3474e-09   1.7956e-13   3.3029e-14   this run
+                       21   7.3561e-09   1.8116e-13   3.3168e-14   paper
+   10  1e-08    21     21   7.3406e-09   1.0515e-11   1.9340e-12   this run
+                       21   7.3319e-09   1.0511e-11   1.9334e-12   paper
+  (51-point start: adaptation stopped at TOL = 1e-9, see README; use opts.calibrate51=false for the literal TOL = 1e-8)
+  figure saved: figures/fig2_problem1_exact.png
+  figure saved: figures/fig3_problem1_meshes.png
+
+==== Problem 2:  y'' + 2/t y' - phi^2 y exp(gamma beta (1-y)/(1+beta(1-y))) = 0, y'(0)=0, y(1)=1   (Table 4) ====
+sol.   order    TOL   mesh     abs. error
+y1(t)      6  1e-08     51     4.0208e-14   this run
+                        51     3.4230e-14   paper
+y1(t)      8  1e-08     51     2.7028e-14   this run
+                        51     2.2180e-14   paper
+y1(t)     10  1e-08     51     2.3382e-13   this run
+                        51     1.8676e-13   paper
+y3(t)      6  1e-08     51     3.8121e-14   this run
+                        51     7.5002e-14   paper
+y3(t)      8  1e-08     51     3.7450e-14   this run
+                        51     7.4565e-14   paper
+y3(t)     10  1e-08     51     3.2450e-14   this run
+                        51     6.9790e-14   paper
+  (the paper could not obtain y2(t) with bvpsuite2.0 either)
+  figure saved: figures/fig4_problem2_solutions.png
+
+==== Problem 3:  y'' + 4/t y' + (t y - 1) y = 0, y'(0)=0, BC at t=L   (Table 6) ====
+   L order    TOL   mesh     abs. error
+  --- y'(0)=0, y(L)+y'(L)=0 ---
+   5     6  1e-08     51     4.4663e-14   this run
+                      51     6.3159e-15   paper
+   5     8  1e-08     51     2.7419e-14   this run
+                      51     5.7958e-15   paper
+   5    10  1e-08     51     1.5545e-12   this run
+                      51     1.5234e-12   paper
+  20     6  1e-08     51     1.7207e-10   this run
+                      51     1.7189e-10   paper
+  20     8  1e-08     51     4.0058e-13   this run
+                      51     1.7451e-12   paper
+  20    10  1e-08     51     3.1606e-12   this run
+                      51     2.9796e-12   paper
+  --- y'(0)=0, y(L)=0 ---
+   5     6  1e-08     51     6.9024e-14   this run
+                      51     8.5716e-15   paper
+   5     8  1e-08     51     6.7766e-14   this run
+                      51     1.2037e-14   paper
+   5    10  1e-08     51     8.4637e-13   this run
+                      51     9.0060e-13   paper
+  20     6  1e-08     51     1.7207e-10   this run
+                      51     1.7187e-10   paper
+  20     8  1e-08     51     3.9835e-13   this run
+                      51     3.6224e-13   paper
+  20    10  1e-08     51     3.1597e-12   this run
+                      51     2.9859e-12   paper
+  figure saved: figures/fig5a_problem3_bc1.png
+  figure saved: figures/fig5b_problem3_bc2.png
+
+==== Problem 4:  y'' + (N-1)/t y' - 4 lam^2 (y+1) y (y-xi) = 0, y'(0)=0, y(inf)=xi  (Table 8) ====
+     (solved on tau = 1 - 1/sqrt(1+t) in [0,1], as in the paper)
+   xi order    TOL   mesh     abs. error
+  0.1     6  1e-08     51     2.8527e-14   this run
+                       51     2.8471e-14   paper
+  0.1     8  1e-08     51     1.3375e-15   this run
+                       51     1.4489e-15   paper
+  0.1    10  1e-08     51     2.2321e-13   this run
+                       51     2.2298e-13   paper
+  0.6     6  1e-08     51     7.6070e-10   this run
+                       51     7.6069e-10   paper
+  0.6     8  1e-08     51     2.7548e-12   this run
+                       51     2.7590e-12   paper
+  0.6    10  1e-08     51     6.1926e-12   this run
+                       51     6.1910e-12   paper
+  figure saved: figures/fig7_problem4_solutions.png
+
+Total run time: 142.9 s
