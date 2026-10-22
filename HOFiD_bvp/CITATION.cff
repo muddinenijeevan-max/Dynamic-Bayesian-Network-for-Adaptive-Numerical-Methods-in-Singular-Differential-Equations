@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite the repository."
+title: "HOFiD_bvp: Adaptive High-Order Finite-Difference Solver"
+type: software
+version: 1.0.0
+date-released: 2026-10-22
+authors:
+  - family-names: "Contributors"
+repository-code: "https://github.com/REPLACE_WITH_USERNAME/REPLACE_WITH_REPOSITORY"
+license: MIT
